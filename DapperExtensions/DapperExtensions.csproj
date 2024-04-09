@@ -27,6 +27,7 @@
 		<PackageReleaseNotes>
       1.9.0
       * Changed dependencies to latest and greatest with respect to TFMs
+			* Merged behind-commits from original project
 
       1.8.0
       * Added TFM for net8.0
