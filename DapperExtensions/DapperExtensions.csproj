@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net8.0</TargetFrameworks>
-		<Version>1.8.0</Version>
+		<Version>1.9.0</Version>
     <AssemblyVersion>1.7.0</AssemblyVersion>
     <InformationalVersion>1.7.0</InformationalVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -26,7 +26,6 @@
 		<RepositoryUrl>https://github.com/gimlichael/Dapper-Extensions.git</RepositoryUrl>
 		<PackageReleaseNotes>
       1.9.0
-      * Added TFM for net8.0
       * Changed dependencies to latest and greatest with respect to TFMs
 
       1.8.0
