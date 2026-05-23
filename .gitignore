@@ -384,3 +384,4 @@ _ReSharper.*
 # Nuget
 [Pp]ackages
 
+!build-release-package.ps1
