@@ -25,6 +25,7 @@
       * Changed dependencies to latest and greatest with respect to TFMs
       * Added TFM for net10.0
       * Removed all .net framework TFMs
+
       1.10.0
       * Changed dependencies to latest and greatest with respect to TFMs
       * Added TFM for net9.0
