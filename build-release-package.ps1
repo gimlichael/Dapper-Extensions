@@ -74,11 +74,22 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-# Find the generated package
-$nupkg = Get-ChildItem "./nupkg" -Filter "*.nupkg" -ErrorAction SilentlyContinue | Select-Object -First 1
+# Find the exact package using the evaluated Release project properties
+$packagePropertiesJson = dotnet msbuild $projectPath -property:Configuration=Release -getProperty:PackageId,PackageVersion
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Failed to determine package identity"
+    exit 1
+}
+$packageProperties = ($packagePropertiesJson -join "`n" | ConvertFrom-Json).Properties
+if (-not $packageProperties.PackageId -or -not $packageProperties.PackageVersion) {
+    Write-Error "PackageId and PackageVersion must not be empty"
+    exit 1
+}
+$packagePath = Join-Path "./nupkg" "$($packageProperties.PackageId).$($packageProperties.PackageVersion).nupkg"
+$nupkg = Get-Item -LiteralPath $packagePath -ErrorAction SilentlyContinue
 
 if (-not $nupkg) {
-    Write-Error "No .nupkg file found in ./nupkg directory"
+    Write-Error "Expected package not found: $packagePath"
     exit 1
 }
 
